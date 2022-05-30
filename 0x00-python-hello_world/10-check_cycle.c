@@ -4,19 +4,28 @@
 * @list: singly list to check
 * Return: 0 if there is no cycle, 1 if there is a cycle
 */
+
 int check_cycle(listint_t *list)
 {
-	listint_t *current;
+	listint_t *head = list, *tail = list;
 
-	if (list == NULL)
-		return (0);
-
-	current = list->next;
-	while (current != NULL)
+	if (list != NULL)
 	{
-		if (current == list)
-			return (1);
-		current = current->next;
+		while (head && head->next)
+		{
+			head = head->next->next;
+			tail = tail->next;
+			if (tail == hare)
+			{
+				tail = list;
+				while (tail != head)
+				{
+					tail = tail->next;
+					head = head->next;
+				}
+				return (1);
+			}
+		}
 	}
 	return (0);
 }
