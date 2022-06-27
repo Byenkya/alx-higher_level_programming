@@ -4,5 +4,5 @@ This module defines the Rectangle Object
 """
 
 class Rectangle:
-    """Rectangle class skeleton"
+    """Rectangle class skeleton"""
     pass
