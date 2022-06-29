@@ -12,6 +12,7 @@ solutions are represented in the format [[r, c], [r, c], [r, c], [r, c]]
 where `r` and `c` represent the row and column, respectively, where a
 queen must be placed on the chessboard.
 """
+
 import sys
 
 
@@ -27,7 +28,7 @@ def board_deepcopy(board):
     """Return a deepcopy of a chessboard."""
     if isinstance(board, list):
         return list(map(board_deepcopy, board))
-    return (board) 
+    return (board)
 
 
 def get_solution(board):
@@ -132,4 +133,3 @@ if __name__ == "__main__":
     solutions = recursive_solve(board, 0, 0, [])
     for sol in solutions:
         print(sol)
-
