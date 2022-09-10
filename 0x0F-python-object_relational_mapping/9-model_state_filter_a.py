@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-"""A script that prints the State passed as argument
-from the database hbtn_0e_6_usa"""
+"""A script that lists all State
+objects that contains the letter a
+ from the database hbtn_0e_6_usa"""
 
 
-from sys import argv
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     import sys
     from model_state import Base, State
@@ -19,9 +17,8 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
 
     session = Session(engine)
-    state = session.query(State).filter(State.name == sys.argv[4]).first()
-    if state:
-        print("{}".format(state.id))
-    else:
-        print("Not found")
+    for state in session.query(State)\
+                        .filter(State.name.like('%a%'))\
+                        .order_by(State.id):
+        print("{}: {}".format(state.id, state.name))
     session.close()
