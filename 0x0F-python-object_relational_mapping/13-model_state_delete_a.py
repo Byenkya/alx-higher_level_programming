@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Adds the State object "Lousiana" to the database hbtn_0e_6_usa
+Deletes all State objects with a name containing the letter a
 """
 import sys
 from model_state import Base, State
@@ -15,8 +15,9 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    newState = State(name='Louisiana')
-    session.add(newState)
-    session.commit()
+    states = session.query(State).filter(State.name.like('%a%')).all()
 
-    print(newState.id)
+    for state in states:
+        session.delete(state)
+
+    session.commit()
